@@ -1,20 +1,38 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import LoginPage from "../views/LoginPage.vue";
+import AdminPage from "../views/AdminPage.vue";
+import StudentPage from "../views/StudentPage.vue";
+import TeacherPage from "../views/TeacherPage.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "home",
-    component: HomeView,
+    name: "LoginPage",
+    //   // route level code-splitting
+    //   // this generates a separate chunk (about.[hash].js) for this route
+    //   // which is lazy-loaded when the route is visited.
+    //   component: () =>
+    //     import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    component: LoginPage,
+    meta: { displayName: "登录" },
   },
   {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    path: "/studentPage",
+    name: "StudentPage",
+    component: StudentPage,
+    meta: { displayName: "学生页" },
+  },
+  {
+    path: "/teacherPage",
+    name: "TeacherPage",
+    component: TeacherPage,
+    meta: { displayName: "教师页" },
+  },
+  {
+    path: "/adminPage",
+    name: "AdminPage",
+    component: AdminPage,
+    meta: { displayName: "管理员页" },
   },
 ];
 
