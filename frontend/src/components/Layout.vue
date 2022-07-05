@@ -1,35 +1,37 @@
 <template>
   <el-container id="layout_container">
     <el-header>
-      <el-menu :default-active="activeIndex" mode="horizontal" router>
-        <el-menu-item style="padding: 0" index="logo">
-          <img src="../assets/schoolLogo.png" style="width: 160px; height: 62px" />
-        </el-menu-item>
-        <template v-if="username !== ''">
-          <slot name="manu"></slot>
-          <!--eslint-disable-next-line-->
-          <!--<template v-for="route in routes" :key="route.name" :route="route">-->
-          <!--<el-menu-item :index="route.path">{{ route.meta.displayName }}</el-menu-item>-->
-          <!--</template>-->
-          <el-sub-menu style="margin-left: auto" index="logoutMenu">
-            <template #title>
-              <i class="el-icon-setting"></i>
-              {{ username }}
-            </template>
-            <el-menu-item @click="logoff()" index="logout">
-              <i class="el-icon-right"></i>
-              注销登陆
-            </el-menu-item>
-            <el-menu-item index="ChangePassword">
-              <i class="el-icon-right"></i>
-              修改密码
-            </el-menu-item>
-          </el-sub-menu>
-        </template>
-        <template v-else>
-          <el-menu-item class="is-active">请登陆后访问!</el-menu-item>
-        </template>
-      </el-menu>
+      <slot name="bar">
+        <el-menu :default-active="activeIndex" mode="horizontal" router>
+          <el-menu-item style="padding: 0" index="logo">
+            <!--eslint-disable-next-line-->
+            <img src="../assets/schoolLogo.png" style="width: 160px; height: 62px" />
+          </el-menu-item>
+          <template v-if="username !== ''">
+            <!--eslint-disable-next-line-->
+            <!--<template v-for="route in routes" :key="route.name" :route="route">-->
+            <!--<el-menu-item :index="route.path">{{ route.meta.displayName }}</el-menu-item>-->
+            <!--</template>-->
+            <el-sub-menu style="margin-left: auto" index="logoutMenu">
+              <template #title>
+                <i class="el-icon-setting"></i>
+                {{ username }}
+              </template>
+              <el-menu-item @click="logoff()" index="logout">
+                <i class="el-icon-right"></i>
+                注销登陆
+              </el-menu-item>
+              <el-menu-item index="ChangePassword">
+                <i class="el-icon-right"></i>
+                修改密码
+              </el-menu-item>
+            </el-sub-menu>
+          </template>
+          <template v-else>
+            <el-menu-item class="is-active">请登陆后访问!</el-menu-item>
+          </template>
+        </el-menu>
+      </slot>
     </el-header>
     <el-main style="height: 100%">
       <slot name="main"></slot>
@@ -59,9 +61,6 @@ export default {
     username() {
       return this.$store.state.username || "";
     },
-  },
-  data() {
-    return {};
   },
   methods: {
     logoff() {

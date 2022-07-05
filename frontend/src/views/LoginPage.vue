@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import Layout from "@/components/Layout";
+import Layout from "@/components/Layout.vue";
 import { ElMessage } from "element-plus";
 // import store from "../store";
 export default {
