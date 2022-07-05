@@ -35,8 +35,10 @@
         </template>
       </el-menu>
     </template>
+    <template v-slot:main>
+      <router-view />
+    </template>
   </layout>
-  <router-view />
 </template>
 
 <script>
