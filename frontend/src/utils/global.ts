@@ -1,6 +1,17 @@
-const backEndHost = "http://127.0.0.1:5000/";
+const backendHost = "http://127.0.0.1:5000/";
+const backend = {
+  baseURL: backendHost,
+  getStudentsApi: backendHost + "getStudentsData",
+  getTeachersApi: backendHost + "getTeachersData",
+  getCoursesApi: backendHost + "getCoursesData",
+  getMajorsApi: backendHost + "getMajorsData",
+  getDepartmentsApi: backendHost + "getDepartmentsData",
+  getChooseCourseApi: backendHost + "getChooseCourseData",
+  getTeachCourseApi: backendHost + "getTeachCourseData",
+  getGradeApi: backendHost + "getGradeApi",
+};
 const frontEndHost = " http://localhost:8080/";
 export default {
-  backEndHost, // 后端地址
+  backend, // 后端地址
   frontEndHost, // 前端地址
 };

@@ -12,8 +12,8 @@
           <el-menu-item index="/AdminPage/CourseInfoManage">课程信息管理</el-menu-item>
           <el-menu-item index="/AdminPage/MajorInfoManage">专业信息管理</el-menu-item>
           <el-menu-item index="/AdminPage/DepartmentInfoManage">部门信息管理</el-menu-item>
-          <el-menu-item index="/AdminPage/ChooseCourseManage">学生选课情况更改</el-menu-item>
-          <el-menu-item index="/AdminPage/CurriculumTeachArg">教师排课情况更改</el-menu-item>
+          <el-menu-item index="/AdminPage/ChooseCourseManage">学生选课情况</el-menu-item>
+          <el-menu-item index="/AdminPage/CurriculumTeachArg">教师排课情况</el-menu-item>
           <el-menu-item index="/AdminPage/GradeManage">成绩信息管理</el-menu-item>
           <el-sub-menu style="margin-left: auto" index="logoutMenu">
             <template #title>
