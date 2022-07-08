@@ -3,20 +3,17 @@
     <!-- 插入面包板-->
     <template v-slot:bread_crumb>
       <el-breadcrumb-item>用户：<strong>管理员</strong></el-breadcrumb-item>
-      <el-breadcrumb-item>学生信息管理</el-breadcrumb-item>
+      <el-breadcrumb-item>教师排课情况</el-breadcrumb-item>
     </template>
     <!-- 插入数据面板-->
     <template v-slot:data_table>
       <el-table-column label="序号" type="index"></el-table-column>
-      <el-table-column label="学号" prop="syc_sno13" sortable></el-table-column>
-      <el-table-column label="姓名" prop="syc_sname13" sortable></el-table-column>
-      <el-table-column label="性别" prop="syc_ssex13" sortable></el-table-column>
-      <el-table-column label="年龄" prop="syc_sage13" sortable></el-table-column>
-      <el-table-column label="生源地" prop="syc_source13" sortable></el-table-column>
-      <el-table-column label="总学分" prop="syc_scredits13" sortable></el-table-column>
-      <el-table-column label="所在班级" prop="syc_cno13" sortable></el-table-column>
-      <el-table-column label="专业" prop="syc_mno13" sortable></el-table-column>
-      <el-table-column label="状态" prop="syc_ifgraduate13" sortable></el-table-column>
+      <el-table-column label="授课号" prop="syc_teno13" sortable></el-table-column>
+      <el-table-column label="授课教师" prop="syc_tno13" sortable></el-table-column>
+      <el-table-column label="所授课程" prop="syc_cono13" sortable></el-table-column>
+      <el-table-column label="授课班级" prop="syc_cno13" sortable></el-table-column>
+      <el-table-column label="授课时间" prop="syc_classtime13" sortable></el-table-column>
+      <el-table-column label="授课地点" prop="syc_teplace13" sortable></el-table-column>
       <el-table-column label="操作" width="180px">
         <template v-slot="scope">
           <!-- 修改按钮 -->
@@ -39,10 +36,11 @@
 
 <script>
 import TableField from "../../components/TableField";
-import global from "../../utils/global";
 import { Delete, Edit } from "@element-plus/icons-vue";
+import global from "../../utils/global";
+
 export default {
-  name: "StudentInfoManage",
+  name: "CurriculumTeachManage",
   components: { TableField, Edit, Delete },
   data() {
     return {
@@ -56,11 +54,11 @@ export default {
     // 获取学生表
     getStudentList() {
       const requestLatest = this.$axios.create({
-        baseURL: global.backend.getStudentsApi,
+        baseURL: global.backend.getTeachCourseApi,
         timeout: 1000,
       });
       requestLatest
-        .get(global.backend.getStudentsApi)
+        .get(global.backend.getTeachCourseApi)
         .then((res) => {
           console.log(res.data);
           this.data_list = res.data;

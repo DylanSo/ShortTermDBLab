@@ -21,7 +21,7 @@
                 <i class="el-icon-right"></i>
                 注销登陆
               </el-menu-item>
-              <el-menu-item index="ChangePassword">
+              <el-menu-item>
                 <i class="el-icon-right"></i>
                 修改密码
               </el-menu-item>

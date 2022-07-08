@@ -116,7 +116,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "CurriculumTeachArg",
         name: "CurriculumTeachArg",
-        component: () => import("../views/admin_sub_pages/CurriculumTeachArg.vue"),
+        component: () => import("../views/admin_sub_pages/CurriculumTeachManage.vue"),
       },
       {
         path: "GradeManage",

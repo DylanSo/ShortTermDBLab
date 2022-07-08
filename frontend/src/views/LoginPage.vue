@@ -43,6 +43,7 @@
 <script>
 import Layout from "@/components/Layout.vue";
 import { ElMessage } from "element-plus";
+import global from "@/utils/global";
 // import store from "../store";
 export default {
   name: "LoginPage",
@@ -61,17 +62,50 @@ export default {
     };
   },
   methods: {
+    async verify_login() {
+      let formData = new FormData();
+      let tem;
+      formData.append("username", this.loginForm.username.toString());
+      formData.append("pwd", this.loginForm.userpwd.toString());
+      const requestLatest = this.$axios.create({
+        baseURL: global.backend.verifyLoginApi,
+        timeout: 1000,
+      });
+      await requestLatest
+        .post(global.backend.verifyLoginApi, formData)
+        .then((res) => {
+          tem = res.data["msg"];
+        })
+        .catch((error) => {
+          // eslint-disable-next-line
+          console.error(error);
+        });
+      return tem;
+    },
     // 表单校验
     submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
+      this.$refs[formName].validate(async (valid) => {
         if (valid) {
           this.$store.commit("login", this.loginForm.username);
-          ElMessage({
-            showClose: true,
-            message: `用户 ${this.loginForm.username} 登陆成功!`,
-            type: "success",
+          // let tem = await this.verify_login(this.loginForm);
+          this.verify_login(this.loginForm).then((tem) => {
+            if (tem !== "wrong") {
+              ElMessage({
+                showClose: true,
+                message: `用户 ${this.loginForm.username} 登陆成功!`,
+                type: "success",
+              });
+              if (tem === "student") this.$router.replace({ name: "StudentPage" });
+              else if (tem === "teacher") this.$router.replace({ name: "TeacherPage" });
+              else if (tem === "admin") this.$router.replace({ name: "AdminPage" });
+            } else {
+              ElMessage({
+                showClose: true,
+                message: `用户名或密码错误!`,
+                type: "error",
+              });
+            }
           });
-          this.$router.replace({ name: "AdminPage" });
         } else {
           ElMessage({
             showClose: true,

@@ -9,6 +9,10 @@ const backend = {
   getChooseCourseApi: backendHost + "getChooseCourseData",
   getTeachCourseApi: backendHost + "getTeachCourseData",
   getGradeApi: backendHost + "getGradeApi",
+  chooseCourseApi: backendHost + "chooseCourseApi",
+  getStudentInfoApi: backendHost + "stuInfoApi",
+  verifyLoginApi: backendHost + "login",
+  changePwdApi: backendHost + "changePwdApi",
 };
 const frontEndHost = " http://localhost:8080/";
 export default {
